@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Cafes</title>
+</head>
+<body>
+<ul>
+    {% for cafe in all_cafes %}
+    <li>
+        <form method="post" role="form" action="">
+            {{ cafe.name }}<button type="submit" value="{{ cafe.id }}" name="delete">DELETE</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
