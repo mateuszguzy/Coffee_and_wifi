@@ -49,7 +49,7 @@ class User(UserMixin, db.Model):
     name = db.Column(db.String(1000))
 
 
-# db.create_all()
+db.create_all()
 
 
 # custom decorator that only allows admin to access certain views
