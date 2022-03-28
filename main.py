@@ -36,7 +36,6 @@ class Cafe(db.Model):
     has_toilet = db.Column(db.Boolean, nullable=False)
     has_wifi = db.Column(db.Boolean, nullable=False)
     can_take_calls = db.Column(db.Boolean, nullable=False)
-    seats = db.Column(db.String(250), nullable=False)
     coffee_price = db.Column(db.Float(), nullable=False)
 
 
@@ -49,7 +48,7 @@ class User(UserMixin, db.Model):
     name = db.Column(db.String(1000))
 
 
-# db.create_all()
+db.create_all()
 
 
 # custom decorator that only allows admin to access certain views
