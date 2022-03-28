@@ -11,7 +11,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 # ------ SET APP
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL", "sqlite:///cafes.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 load_dotenv()
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
@@ -37,7 +37,7 @@ class Cafe(db.Model):
     has_wifi = db.Column(db.Boolean, nullable=False)
     can_take_calls = db.Column(db.Boolean, nullable=False)
     seats = db.Column(db.String(250), nullable=False)
-    coffee_price = db.Column(db.String(250), nullable=False)
+    coffee_price = db.Column(db.Float(), nullable=False)
 
 
 # --- USERS DB
@@ -135,7 +135,7 @@ def add_cafe():
         new_cafe.has_wifi = form.has_wifi.data
         new_cafe.has_toilet = form.has_toilet.data
         new_cafe.can_take_calls = form.can_take_calls.data
-        new_cafe.coffee_price = "£" + form.coffee_price.data
+        new_cafe.coffee_price = form.coffee_price.data
         try:
             db.session.add(new_cafe)
             db.session.commit()

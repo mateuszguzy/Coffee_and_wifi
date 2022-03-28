@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, SelectMultipleField, widgets, IntegerField, BooleanField, \
-    URLField
+    URLField, FloatField
 from wtforms.validators import DataRequired
 
 
@@ -43,5 +43,5 @@ class AddCafe(FlaskForm):
     has_wifi = BooleanField("Has WiFi")
     has_toilet = BooleanField("Has toilet")
     can_take_calls = BooleanField("Can take calls")
-    coffee_price = IntegerField("Coffee price", validators=[DataRequired()])
+    coffee_price = FloatField("Coffee price (£)", validators=[DataRequired()])
     submit = SubmitField("Add Cafe")
