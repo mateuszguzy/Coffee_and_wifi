@@ -11,7 +11,10 @@ from flask_sqlalchemy import SQLAlchemy
 
 # ------ SET APP
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("POSTGRES_DATABASE_URL", "sqlite:///cafes.db")
+# to work online on PostgreSQL
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("POSTGRES_DATABASE_URL").replace("postgres", "postgresql")
+# to work locally on SQLite
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("sqlite:///cafes.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 load_dotenv()
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
