@@ -12,7 +12,7 @@ from flask_sqlalchemy import SQLAlchemy
 # ------ SET APP
 app = Flask(__name__)
 # to work online on PostgreSQL
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("POSTGRES_DATABASE_URL").replace("postgres", "postgresql")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL").replace("postgres", "postgresql")
 # to work locally on SQLite
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("sqlite:///cafes.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
